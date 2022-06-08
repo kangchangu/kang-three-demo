@@ -33,7 +33,7 @@ const UserList = () => {
             {users.map((item , index) => {
                 console.log(index);
 
-                <User user={item} />
+                return <User user={item} key={index}/>
             })}
             
         
@@ -42,7 +42,7 @@ const UserList = () => {
 }
 
 const User = ({user} : any) => {
-    console.log(user);
+    
     return(
     <div>
 
