@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import CreateUser from "./CreateUser";
 
 interface UserModel {
@@ -52,34 +52,37 @@ const UserList = () => {
 
     const {username , email} : any= inputs;
 
-    const onChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = useCallback((e : React.ChangeEvent<HTMLInputElement>) => {
+
+        console.log("onChange init");
         const {name , value} = e.target;
 
         setInputs({
             ...inputs ,
             [name] : value
-        })
-    }
+        })  
+    },[inputs]);
 
-    const onRemove = (id : number) => {
+   
+    const onRemove = useCallback((id : number) => {
+        console.log("onRemove init");
         setUsers(users.filter(item => {
             return item.id !== id
         }))
-    }
+    } ,[users]);
 
-    const onToggle = (id : number) => {
-        // console.log(users);
-
+    const onToggle = useCallback((id : number) => {
+        console.log("onToggle init");
         setUsers(
             users.map(user =>
               user.id === id ? { ...user, active: !user.active } : user
             )
           );
-    }
+    },[users]);
         
 
-    const onCreate = () => {
-        
+    const onCreate = useCallback(() => {
+        console.log("onCreate init");
         const user = {
             id : nextId.current ++ ,
             username ,
@@ -89,7 +92,8 @@ const UserList = () => {
         
         setUsers([...users , user]);
         
-    }
+    } , [users , username , email] );
+
     return(
         <>
             <div>Test Array Sample</div>

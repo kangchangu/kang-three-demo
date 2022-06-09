@@ -1,8 +1,10 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import BoxSampePage from "../page/BoxSamplePage";
+import Counter from "./Counter";
 import EventMesh from "./EventMesh";
 import InputSample from "./InputSample";
 import UserList from "./UserList";
+import UserListReducer from "./UserListReducer";
 
 
 const TopMenu = () => {
@@ -13,6 +15,8 @@ const TopMenu = () => {
                 <Link to="/mesh/event" style={{paddingLeft : 20}}>Event Mesh Example</Link>
                 <Link to="/input/sampe" style={{paddingLeft : 20}}>Input Sampe</Link>
                 <Link to="/userlist/arry" style={{paddingLeft : 20}}>UserList Array Sample</Link>
+                <Link to="/counter/reducer" style={{paddingLeft : 20}}>Counter Reducer Sample</Link>
+                <Link to="/userlist/reducer" style={{paddingLeft : 20}}>USERLIST Reducer Sample</Link>
                 {/* <Link to="/test" style={{paddingLeft : 20}}>React Testing</Link>
                 <Link to="/fetch" style={{paddingLeft : 20}}> Fetch Testing </Link>
                 <Link to="/form-validation" style={{paddingLeft : 20}}>Form Validation</Link> */}
@@ -22,6 +26,8 @@ const TopMenu = () => {
                 <Route path="/mesh/event" element={<EventMesh/>}></Route>
                 <Route path="/input/sampe" element={<InputSample/>}></Route>
                 <Route path="/userlist/arry" element={<UserList/>}></Route>
+                <Route path="/counter/reducer" element={<Counter/>}></Route>
+                <Route path="/userlist/reducer" element={<UserListReducer/>}></Route>
 
                 {/* <Route path="/test" element={<Counter/>}></Route>
                 <Route path="/fetch" element={<Fetch/>}></Route>
