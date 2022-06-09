@@ -1,0 +1,7 @@
+
+### 상품 리스트
+GET https://fakestoreapi.com/products
+Content-Type: application/json
+
+### 상품 선택
+GET https://fakestoreapi.com/products/1

@@ -42,7 +42,6 @@ const reducer = (state : UserState , action : any) => {
                     )
                 }))
             }
-            return state
         case 'USER_CREATE' :
             return{
                 ...state , 

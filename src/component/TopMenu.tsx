@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import BoxSampePage from "../page/BoxSamplePage";
+import ProductPage from "../page/ProductPage";
 import Counter from "./Counter";
 import EventMesh from "./EventMesh";
 import InputSample from "./InputSample";
@@ -12,6 +13,7 @@ const TopMenu = () => {
         <BrowserRouter>
             <div style={{padding : 20 , border :'5px solid gray'}}>
                 <Link to="/" style={{paddingLeft : 20}}>Box Example</Link>
+                <Link to="/product/list" style={{paddingLeft : 20}}>Product List Page(React Query)</Link>
                 <Link to="/mesh/event" style={{paddingLeft : 20}}>Event Mesh Example</Link>
                 <Link to="/input/sampe" style={{paddingLeft : 20}}>Input Sampe</Link>
                 <Link to="/userlist/arry" style={{paddingLeft : 20}}>UserList Array Sample</Link>
@@ -23,6 +25,7 @@ const TopMenu = () => {
             </div>
             <Routes>
                 <Route path="/" element={<BoxSampePage/>}></Route>
+                <Route path="/product/list" element={<ProductPage/>}></Route>
                 <Route path="/mesh/event" element={<EventMesh/>}></Route>
                 <Route path="/input/sampe" element={<InputSample/>}></Route>
                 <Route path="/userlist/arry" element={<UserList/>}></Route>
