@@ -3,12 +3,16 @@ import { useQuery } from "react-query";
 import { getProduct } from "../api/productAPI";
 import { Product } from "../model/product.model";
 
-
+import '../asset/css/product.css'
+import Card from "antd/lib/card/Card";
+import Meta from "antd/lib/card/Meta";
+import { Row } from "antd";
 
 const ProductList = () => {
     
         //API CALL
     const { data , isLoading, isFetching, isError, error } = useQuery('get-product' , getProduct) ;
+    
 
     
     useEffect(() => {
@@ -16,8 +20,6 @@ const ProductList = () => {
     },[])
     
     const productlist : Product[] = data?.data;
-
-    console.log(1111111);
     
     if(isLoading){
         return <h2> Loading ... </h2>
@@ -48,21 +50,34 @@ const ProductList = () => {
 }
 
 
-const ProductListCard = ({product} : any) => {
-
+const ProductListCard = ({product} : {product : any}) => {
+    //const { data , isLoading, isFetching, isError, error } = useQuery('get-product' , getProduct) ;
     
     return(
         <>
-    <div>
-        <div>id : {product.id} </div>
-        <div>title : {product.title} </div>
-        <div>price : {product.price} </div>
-        <div>description : {product.description} </div>
-        <div>category : {product.category} </div>
-        <div>image : {product.image} </div>
-        <div>rating.rate : {product.rating.rate} </div>
-        <div>rating.count : {product.rating.count} </div>
-    </div>
+        <Row>
+            
+            <Card 
+                hoverable 
+                style={{width:500}} 
+                cover={<img alt="example" src={product.image} style={{width:500}} />}>
+                <Meta title={product.title} description={product.description} />
+            </Card>
+        </Row>
+    {/* <div className="flex-container">
+        
+
+            <div className="flex-item">{product.title} </div>
+            <div className="flex-item">{product.price} </div>
+            <div className="flex-item">{product.description} </div>
+            <div className="flex-item">{product.category} </div>
+            <div className="flex-item"><img src= /> </div>
+            <div className="flex-item">{product.rating.rate} / {product.rating.count} </div>
+        
+
+        
+        
+    </div> */}
     <br/>
     </>
     )
